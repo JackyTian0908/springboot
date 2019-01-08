@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+function login(){
+	var name=$("input[name='name']").val();
+	var password=$("input[name='password']").val();
+	$.ajax({
+		url : "/login",
+		type : "post",
+		async : true,
+		data:{
+			name:name,
+			password:password
+		},
+		dataType : "text",
+		success : function(data) {
+			console.log(data);
+		},error:function(XMLHttpRequest, textStatus, errorThrown){
+			console.log("---------------------------"); 
+			console.log(XMLHttpRequest.status); 
+			console.log("---------------------------"); 
+			console.log(XMLHttpRequest.readyState); 
+			console.log("---------------------------"); 
+			console.log(textStatus);   
+		}
+	});
+}
+</script>
+</head>
+<body>
+<input type="text" name="name" value="1"/>
+<input type="text" name="password" value="1"/>
+<input type="button" onclick="login()" value="login"/>
+</body>
+</html>
